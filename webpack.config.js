@@ -8,6 +8,14 @@ module.exports = {
         filename: 'bundle.js',
         path: path.join(__dirname,'dist'),
     },
+    module:{
+        rules:[
+            { 
+              test:/\.css$/,
+              use: ['style-loader','css-loader'] 
+            },
+        ],
+    },
     plugins: [
         new htmlPlugin({
             template: path.join(__dirname,'src','index.html'),
