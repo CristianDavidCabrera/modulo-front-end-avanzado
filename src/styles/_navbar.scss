@@ -1,5 +1,5 @@
  .app-navbar {
-    background-color: #388E3C;
+    background-color: $primary-color-dark;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -15,13 +15,13 @@
 
 .app-navbar a {
     font-size: 3rem;
-    color: #FFF;
+    color: $primary-color-text;
 }
 
 .app-navbar .fas {
     font-size: 2rem;
     cursor: pointer;
-    color: #FFF;
+    color: $primary-color-text;
 }
 
 .app-navbar .filter-container {
