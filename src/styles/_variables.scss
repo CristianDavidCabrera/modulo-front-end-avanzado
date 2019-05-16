@@ -1,3 +1,4 @@
+/*Colors*/
 $primary-color-dark:   #388E3C;
 $primary-color:        #4CAF50;
 $primary-color-light:  #C8E6C9;
@@ -6,3 +7,24 @@ $accent-color:         #9E9E9E;
 $primary-text-color:   #212121;
 $secondary-text-color: #757575;
 $divider-color:        #BDBDBD;
+
+/*Sizes*/
+$primary-font-size: 1rem;
+$icons: $primary-font-size + .5rem;
+$header-h2: $primary-font-size + .2rem;
+$logo-font: $primary-font-size + 2rem;
+
+/*Media*/
+$tablet-width: 768px;
+$desktop-width: 992px;
+$large-desktop-width: 1024px;
+
+// Font styles
+* {
+    font-family: "Roboto", Verdana;
+}
+
+a {
+    text-decoration: none;
+}
+  

@@ -1,11 +1,4 @@
-@import "variables";
 @import "reset";
+@import "variables";
+@import "responsive";
 @import "navbar";
-
-* {
-    font-family: 'Roboto', Verdana;
-}
-
-a {
-    text-decoration: none;
-}
