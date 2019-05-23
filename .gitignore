@@ -1,3 +1,5 @@
 dist
 node_modules
 *.log
+ejemplo-grid.html
+ejemplo-grid-area.html
