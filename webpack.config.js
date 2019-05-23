@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const htmlPlugin = require('html-webpack-plugin');
 
 module.exports = {
+    devtool: 'source-map',
     mode:'development',
     entry: path.join(__dirname,'src','main.js'),
     output: {
@@ -28,6 +29,11 @@ module.exports = {
                     },
                   },
                 ], 
+            },
+            {
+                test: /\.js$/,
+                use: 'babel-loader',
+                exclude: /node_modules/
             },
         ],
     },
