@@ -2,6 +2,7 @@ import striptags from "striptags";
 import escapeHtml from "escape-html";
 import { openHeader } from "./ui";
 import api from "./api";
+import defaultImg from './../images/default.jpg';
 
 const { getShows } = api();
 
@@ -39,7 +40,7 @@ const templateShow = ({ id, name, image, summary, principal }) =>
         </header>
         <div class="card-content">
         <div class="card-content-image">
-            <img src="${image.medium}" />
+            <img src="${image ? image.medium : defaultImg}" />
         </div>
         <div class="card-content-text">
             <p>${striptags(summary)}</p>
