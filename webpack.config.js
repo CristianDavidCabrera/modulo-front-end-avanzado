@@ -48,7 +48,7 @@ module.exports = {
         overlay: true,
         port: 3000,
         hot: true,
-        contentBase:[
+        contentBase: [
             path.join(__dirname, 'src'),
             path.join(__dirname, 'src', 'templates'),
         ],

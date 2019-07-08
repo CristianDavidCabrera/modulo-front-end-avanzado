@@ -1,6 +1,6 @@
 import './styles/index.scss';
-import another from './js/another';
-//const another = require('./js/another');
+import './js/ui';
+import './js/shows';
+import './js/navbar'
 
-console.log(another);
 console.log('Hello World');
