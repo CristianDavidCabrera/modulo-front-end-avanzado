@@ -39,7 +39,11 @@ module.exports = {
     new webpack.ProgressPlugin(),
     new CleanWebpackPlugin(),
     new htmlPlugin({
-      template: path.join(__dirname, "src", "index.html")
+      template: path.join(__dirname, "src", "index.html"),
+      minify: {
+        collapseWhitespace: true,
+        removeComments: true,
+      },
     }),
     new MiniCssExtractPlugin(),
   ]
