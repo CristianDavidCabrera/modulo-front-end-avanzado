@@ -1,13 +1,17 @@
 const path = require('path');
 const webpack = require('webpack');
 const htmlPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
     devtool: 'source-map',
     mode:'development',
-    entry: path.join(__dirname,'src','main.js'),
+    entry: {
+       main: path.join(__dirname,'src','main.js'),
+       detail: path.join(__dirname,'src', 'detail.js'),
+    },
     output: {
-        filename: 'bundle.js',
+        filename: '[name].bundle.js',
         path: path.join(__dirname,'dist'),
     },
     module:{
@@ -47,8 +51,15 @@ module.exports = {
         ],
     },
     plugins: [
+        new CleanWebpackPlugin(),
         new htmlPlugin({
             template: path.join(__dirname,'src','index.html'),
+            chunks: ['main'],
+        }),
+        new htmlPlugin({
+            filename:'detail.html',
+            template: path.join(__dirname,'src','detail.html'),
+            chunks: ['detail'],
         }),
         new webpack.HotModuleReplacementPlugin(),
     ],
