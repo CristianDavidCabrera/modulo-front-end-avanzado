@@ -20,6 +20,15 @@ const api = (API_URL = 'http://api.tvmaze.com/') => {
                 throw e;
               }
         }, 
+        getShowsDetails:  async (id) => {
+            try {
+                const response = await fetch(`${SHOWS_URL}/${id}`);
+                const show = await response.json();
+                return show;
+            } catch (error) {
+                console.error(error);
+            }
+        }
     };
 };
 
