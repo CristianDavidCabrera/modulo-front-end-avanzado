@@ -7,8 +7,8 @@ module.exports = {
     devtool: 'source-map',
     mode:'development',
     entry: {
-       main: path.join(__dirname,'src','main.js'),
-       detail: path.join(__dirname,'src', 'detail.js'),
+        app: path.join(__dirname,'src','main.js'),
+        detail: path.join(__dirname,'src', 'detail.js'),
     },
     output: {
         filename: '[name].bundle.js',
@@ -17,21 +17,27 @@ module.exports = {
     module:{
         rules:[
             { 
-              test:/\.scss$/,
-              use: [
-                  'style-loader', 
-                  {
+            test:/\.scss$/,
+            use: [
+                'style-loader', 
+                {
                     loader: 'css-loader',
                     options: {
                         sourceMap: true,
                     },
-                  },
-                  {
+                },
+                {
+                    loader: 'postcss-loader',
+                    options: {
+                        sourceMap: true,
+                    },
+                },
+                {
                     loader: 'sass-loader',
                     options: {
                         sourceMap: true,
                     },
-                  },
+                },
                 ], 
             },
             {
@@ -43,8 +49,10 @@ module.exports = {
                 test: /\.(jpg|png|gif)$/,
                 use:[
                     {
-                      loader: 'file-loader',
-                      options: {},
+                    loader: 'file-loader',
+                    options: {
+                        name: '[name].[ext]',
+                    },
                     },
                 ], 
             },
@@ -54,7 +62,7 @@ module.exports = {
         new CleanWebpackPlugin(),
         new htmlPlugin({
             template: path.join(__dirname,'src','index.html'),
-            chunks: ['main'],
+            chunks: ['app'],
         }),
         new htmlPlugin({
             filename:'detail.html',

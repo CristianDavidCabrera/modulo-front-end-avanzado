@@ -1,16 +1,33 @@
 import './styles/detail.scss';
+
 import api from './js/api';
+import './js/quoteForm'
+import defaultImage from './images/default.jpg';
 
 const {getShowsDetails} = api();
 
+const detailTemplate = ({id, name, summary, image}) => `
+<header id ="${id}">
+    <div class="title-section"> 
+        <h1>${name}</h1>
+    </div>
+    <div class="image-container"> 
+        <img src="${image ? image.original : defaultImage}" />
+    </div>
+</header>
+<div class="content"> 
+    ${summary}
+</div>
+`;
+
 const renderDetail = async () => {
     try {
-        const [ ,id] = window.location.search ? 
-        window.location.search.split('=') : [];
+        const [, id] = window.location.search ? window.location.search.split('=') : [];
         const show = await getShowsDetails(id);
-        console.log(show);
-    } catch (error) {
-        console.error(error);
+        const showHTML = detailTemplate(show);
+        document.getElementById('detail').innerHTML = showHTML;
+    } catch (e) {
+        console.error(e);
     }
 };
 
