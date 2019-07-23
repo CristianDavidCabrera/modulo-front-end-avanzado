@@ -5,73 +5,74 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
     devtool: 'source-map',
-    mode:'development',
+    mode: 'development',
     entry: {
-        app: path.join(__dirname,'src','main.js'),
-        detail: path.join(__dirname,'src', 'detail.js'),
+        app: path.join(__dirname, 'src', 'main.js'),
+        detail: path.join(__dirname, 'src', 'detail.js'),
     },
     output: {
         filename: '[name].bundle.js',
-        path: path.join(__dirname,'dist'),
+        path: path.join(__dirname, 'dist'),
     },
-    module:{
-        rules:[
-            { 
-            test:/\.scss$/,
-            use: [
-                'style-loader', 
-                {
-                    loader: 'css-loader',
-                    options: {
-                        sourceMap: true,
+    module: {
+        rules: [
+            {
+                test: /\.scss$/,
+                use: [
+                    'style-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            sourceMap: true,
+                        },
                     },
-                },
-                {
-                    loader: 'postcss-loader',
-                    options: {
-                        sourceMap: true,
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            sourceMap: true,
+                        },
                     },
-                },
-                {
-                    loader: 'sass-loader',
-                    options: {
-                        sourceMap: true,
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                            sourceMap: true,
+                        },
                     },
-                },
-                ], 
+                ],
             },
             {
                 test: /\.js$/,
                 use: 'babel-loader',
-                exclude: /node_modules/
+                exclude: /node_modules/,
             },
             {
                 test: /\.(jpg|png|gif)$/,
-                use:[
+                use: [
                     {
-                    loader: 'file-loader',
-                    options: {
-                        name: '[name].[ext]',
+                        loader: 'file-loader',
+                        options: {
+                            name: '[name].development.[ext]',
+                        },
                     },
-                    },
-                ], 
+                ],
             },
         ],
     },
     plugins: [
+        new webpack.ProgressPlugin(),
         new CleanWebpackPlugin(),
         new htmlPlugin({
-            template: path.join(__dirname,'src','index.html'),
+            template: path.join(__dirname, 'src', 'index.html'),
             chunks: ['app'],
         }),
         new htmlPlugin({
-            filename:'detail.html',
-            template: path.join(__dirname,'src','detail.html'),
+            filename: 'detail.html',
+            template: path.join(__dirname, 'src', 'detail.html'),
             chunks: ['detail'],
         }),
         new webpack.HotModuleReplacementPlugin(),
     ],
-    devServer:{
+    devServer: {
         open: true,
         overlay: true,
         port: 3000,

@@ -5,34 +5,6 @@ import api from "./api";
 import defaultImg from './../images/default.jpg';
 
 const { getShows } = api();
-
-//Peticiones a la API (get). Hechas con promesas.
-/* 
-const getShows = () => {
-    return fetch('http://api.tvmaze.com/shows')
-    .then((response) => {
-        console.log(response);
-        return response.json();
-    }).then((datos) => {
-        return datos;
-    });
-};
-console.log( getShows() );
-getShows().then(datos => console.log(datos)); */
-
-//Peticiones a la API (get). Hechas con async/await
-
-/* const getShows = async () => {
-    const response = await fetch('http://api.tvmaze.com/shows');
-    console.log(response);
-    const datos = await response.json();
-    console.log(datos);
-};
-
-getShows().then(datos => console.log(datos)); */
-
-//Peticiones a la API (get). Hechas con async/await y con control de errores try/catch
-
 const templateShow = ({ id, name, image, summary, principal }) =>
   `<div id="${id}" class="card ${principal ? "principal" : "secondary close"}">
         <header class="card-header">

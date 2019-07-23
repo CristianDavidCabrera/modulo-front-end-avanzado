@@ -28,7 +28,7 @@ module.exports = {
       {
         test: /\.js$/,
         use: "babel-loader",
-        exclude: /node_modules/
+        exclude: /node_modules/,
       },
       {
         test: /\.(jpg|png|gif)$/,
@@ -65,6 +65,9 @@ module.exports = {
         removeComments: true,
       },
   }),
-    new MiniCssExtractPlugin(),
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+      chunkFilename: '[id].css',
+    }),
   ],
 };
